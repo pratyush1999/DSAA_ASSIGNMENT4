@@ -10,7 +10,7 @@ q =[
     24 ,   35 ,   55 ,   64 ,   81,   104,   113,    92
 ,    49 ,   64 ,   78  ,  87  , 103  , 121 ,  120  , 101
  ,   72 ,   92 ,   95  ,  98  , 112,   100,   103,    99];
-c=11;
+c=50;
 fun = @(block_struct) dct2(block_struct.data);
 res=blockproc(im, [8 8], fun);
 
@@ -26,6 +26,7 @@ figure;
 imagesc(res);
 
 RMSE(im, res)
+entropy(res)
 function res=RMSE(im1, im2)
 res=sum(sum((im1-im2).*(im1-im2)));
 res=res/(size(im1,1)*size(im1,2));
