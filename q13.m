@@ -1,6 +1,5 @@
 im=imread('LAKE.TIF');
 im=double(im);
-
 imagesc(im);
 q =[
 
@@ -12,7 +11,7 @@ q =[
     24 ,   35 ,   55 ,   64 ,   81,   104,   113,    92
 ,    49 ,   64 ,   78  ,  87  , 103  , 121 ,  120  , 101
  ,   72 ,   92 ,   95  ,  98  , 112,   100,   103,    99];
-c=7;
+c=11;
 fun = @(block_struct) dct2(block_struct.data);
 res=blockproc(im, [8 8], fun);
 
