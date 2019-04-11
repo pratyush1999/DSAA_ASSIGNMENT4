@@ -1,0 +1,1 @@
+res=round(imDCT./(c*qm));
