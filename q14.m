@@ -1,6 +1,5 @@
 im=imread('LAKE.TIF');
 im=double(im);
-imagesc(im);
 q =[
 
     16,    11 ,   10  ,  16 ,  24,    40 ,   51,    61
@@ -17,9 +16,16 @@ res=blockproc(im, [8 8], fun);
 
 fun2 = @(block_struct) quantise(block_struct.data, q, c);
 res=blockproc(res, [8 8], fun2);
+
+fun3 = @(block_struct) dequantise(block_struct.data, q, c);
+res=blockproc(res, [8 8], fun3);
+
+fun4 = @(block_struct) idct2(block_struct.data);
+res=blockproc(res, [8 8], fun4);
 figure;
 imagesc(res);
 
+RMSE(im, res)
 function res=RMSE(im1, im2)
 res=sum(sum((im1-im2).*(im1-im2)));
 res=res/(size(im1,1)*size(im1,2));
